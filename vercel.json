@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "composer.json",
-      "use": "@vercel/php"
+      "use": "@vercel/node"
     }
   ]
 }
