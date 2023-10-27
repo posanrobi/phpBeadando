@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bejelentkezés</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-title">Bejelentkezés</h2>
+        <form method="post" action="feldolgozo.php">
+            <label for="username">Felhasználónév:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Jelszó:</label>
+            <input type="password" name="password" id="password" required>
+            <button type="submit">Bejelentkezés</button>
+        </form>
+    </div>
+    <p class="error-msg"></p>
+</body>
+</html>
