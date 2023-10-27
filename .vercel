@@ -1,0 +1,4 @@
+# .vercel/build.sh
+
+# Install Composer dependencies
+composer install --no-dev
