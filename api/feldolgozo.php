@@ -1,6 +1,7 @@
 <?php
 
-$filename = "../password.txt";
+//$filename = "../password.txt";
+$filename = __DIR__ . "/../password.txt";
 
 $decoded_text = '';
 $line_start = 0;
