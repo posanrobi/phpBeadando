@@ -1,9 +1,10 @@
 <?php
 
-$filename = "password.txt";
+$filename = "../password.txt";
+
 $decoded_text = '';
 $line_start = 0;
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 if (file_exists($filename)) {
     $text = file_get_contents($filename);
@@ -82,13 +83,13 @@ if (file_exists($filename)) {
 
         } else {
             if (!$isUsernameCorrect && !$isPasswordCorrect) {
-                header('Location: errorUsernameAndPassword.html');         
+                header('Location: ../errorUsernameAndPassword.html');         
             } elseif (!$isMatch) {
                 if ($isUsernameCorrect) {
-                    header('Location: errorPassword.html');
+                    header('Location: ../errorPassword.html');
                 }
                 if ($isPasswordCorrect) {
-                    header('Location: errorUsername.html');
+                    header('Location: ../errorUsername.html');
                 }
             }
         }
@@ -104,6 +105,7 @@ if (file_exists($filename)) {
 
 function getFillColor($inputUsername) {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    
     $dotenv->load();
 
     $servername = $_ENV["DB_SERVERNAME"];
