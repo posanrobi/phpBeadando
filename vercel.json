@@ -1,12 +1,7 @@
 {
-  "builds": [
-    {
-      "src": "composer.json",
-      "use": "@vercel/php"
-    },
-    {
-      "src": "composer.lock",
-      "use": "@vercel/php"
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.6.0"
     }
-  ]
+  }
 }
