@@ -4,8 +4,9 @@ $filename = "../password.txt";
 
 $decoded_text = '';
 $line_start = 0;
-require "../vendor/autoload.php";
-//require __DIR__ . '/../vendor/autoload.php';
+//require "../vendor/autoload.php";
+
+require __DIR__ . '/../vendor/autoload.php';
 
 
 if (file_exists($filename)) {
