@@ -94,12 +94,12 @@ if (file_exists($filename)) {
                 /*echo "--hiba--"; */     
             } elseif (!$isMatch) {
                 if ($isUsernameCorrect) {
-                    /*header('Location: ../errorPassword.html');*/
-                    echo "--hiba--";
+                    header('Location: ../errorPassword.html');
+                    /*echo "--hiba--";*/
                 }
                 if ($isPasswordCorrect) {
-                    /*header('Location: ../errorUsername.html');*/
-                    echo "--hiba--";
+                    header('Location: ../errorUsername.html');
+                    /*echo "--hiba--";*/
                 }
             }
         }
