@@ -43,8 +43,12 @@ if (file_exists($filename)) {
         foreach ($userEntries as $userEntry) {
             
             $parts = explode("*", $userEntry);
-            $username = trim($parts[0]);
-            $password = trim($parts[1]);
+            if (count($parts) === 2) {
+                $username = trim($parts[0]);
+                $password = trim($parts[1]);
+            
+
+            
             if ($submittedUsername === $username && $submittedPassword === $password) {
                 $isMatch = true;
                 break;
@@ -53,6 +57,7 @@ if (file_exists($filename)) {
             } elseif ($submittedPassword === $password) {
                 $isPasswordCorrect = true;
             }
+        }
         }
 
         if ($isMatch) {
