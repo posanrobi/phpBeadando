@@ -90,8 +90,8 @@ if (file_exists($filename)) {
 
         } else {
             if (!$isUsernameCorrect && !$isPasswordCorrect) {
-                /*header('Location: ../errorUsernameAndPassword.html'); */
-                echo "--hiba--";        
+                header('Location: ../errorUsernameAndPassword.html');
+                /*echo "--hiba--"; */     
             } elseif (!$isMatch) {
                 if ($isUsernameCorrect) {
                     /*header('Location: ../errorPassword.html');*/
