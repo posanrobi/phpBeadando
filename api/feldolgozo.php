@@ -85,13 +85,16 @@ if (file_exists($filename)) {
 
         } else {
             if (!$isUsernameCorrect && !$isPasswordCorrect) {
-                header('Location: ../errorUsernameAndPassword.html');         
+                /*header('Location: ../errorUsernameAndPassword.html'); */
+                echo "--hiba--";        
             } elseif (!$isMatch) {
                 if ($isUsernameCorrect) {
-                    header('Location: ../errorPassword.html');
+                    /*header('Location: ../errorPassword.html');*/
+                    echo "--hiba--";
                 }
                 if ($isPasswordCorrect) {
-                    header('Location: ../errorUsername.html');
+                    /*header('Location: ../errorUsername.html');*/
+                    echo "--hiba--";
                 }
             }
         }
