@@ -90,16 +90,13 @@ if (file_exists($filename)) {
 
         } else {
             if (!$isUsernameCorrect && !$isPasswordCorrect) {
-                header('Location: ../errorUsernameAndPassword.html');
-                /*echo "--hiba--"; */     
+                header('Location: ../errorUsernameAndPassword.html');   
             } elseif (!$isMatch) {
                 if ($isUsernameCorrect) {
                     header('Location: ../errorPassword.html');
-                    /*echo "--hiba--";*/
                 }
                 if ($isPasswordCorrect) {
                     header('Location: ../errorUsername.html');
-                    /*echo "--hiba--";*/
                 }
             }
         }
@@ -115,7 +112,9 @@ if (file_exists($filename)) {
 
 function getFillColor($inputUsername) {
     //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv = \Dotenv\Dotenv::createImmutable('/var/task/user/api/.env');  
+
+
     $dotenv->load();
 
     $servername = $_ENV["DB_SERVERNAME"];
