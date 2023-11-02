@@ -112,8 +112,8 @@ if (file_exists($filename)) {
 
 function getFillColor($inputUsername) {
     //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv = \Dotenv\Dotenv::createImmutable('.'); 
-    
+    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+
     $dotenv->load();
 
     $servername = $_ENV["DB_SERVERNAME"];
