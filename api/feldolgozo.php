@@ -122,7 +122,9 @@ function getFillColor($inputUsername) {
     // $password = $_ENV["DB_PASSWORD"];
     // $dbname = $_ENV["DB_NAME"];
 
-    $servername = getenv("DB_SERVERNAME");
+    //$servername = getenv("DB_SERVERNAME");
+    $servername = "localhost"; // Use "localhost" as the host for a local MySQL server
+
     $username = getenv("DB_USERNAME");
     $password = getenv("DB_PASSWORD");
     $dbname = getenv("DB_NAME");
