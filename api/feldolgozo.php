@@ -122,14 +122,12 @@ function getFillColor($inputUsername) {
     // $password = $_ENV["DB_PASSWORD"];
     // $dbname = $_ENV["DB_NAME"];
 
-    //$servername = getenv("DB_SERVERNAME");
-    $servername = "localhost"; // Use "localhost" as the host for a local MySQL server
-
+    $servername = getenv("DB_SERVERNAME");
     $username = getenv("DB_USERNAME");
     $password = getenv("DB_PASSWORD");
     $dbname = getenv("DB_NAME");
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname, 3306);
 
     if ($conn->connect_error) {
         die("Kapcsolat sikertelen: " . $conn->connect_error);
