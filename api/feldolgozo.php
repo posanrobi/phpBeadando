@@ -111,7 +111,7 @@ if (file_exists($filename)) {
 
 
 function getFillColor($inputUsername) {
-    /*
+
     //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     //$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); 
 
@@ -126,7 +126,6 @@ function getFillColor($inputUsername) {
     $username = getenv("DB_USERNAME");
     $password = getenv("DB_PASSWORD");
     $dbname = getenv("DB_NAME");
-
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -145,31 +144,5 @@ function getFillColor($inputUsername) {
 
     $conn->close();
     return null;
-    */
-
-        $servername = getenv("DB_SERVERNAME");
-        $username = getenv("DB_USERNAME");
-        $password = getenv("DB_PASSWORD");
-        $dbname = getenv("DB_NAME");
-    
-        //$conn = new mysqli($servername, $username, $password, $dbname);
-        $conn = new mysqli("127.0.0.1", $username, $password, $dbname, getenv("DB_PORT"));
-    
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-    
-        // szín lekérdezése
-        $sql = "SELECT Titkos FROM tabla WHERE Username = '$inputUsername'";
-        $result = $conn->query($sql);
-    
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return $row["Titkos"];
-        }
-    
-        $conn->close();
-        return null;
-
     
 }
