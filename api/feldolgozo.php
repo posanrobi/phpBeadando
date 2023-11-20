@@ -117,6 +117,8 @@ function getFillColor($inputUsername) {
     //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
     //$dotenv->load();
 
+    /*
+
     $servername = $_ENV["DB_SERVERNAME"];
     $username = $_ENV["DB_USERNAME"];
     $password = $_ENV["DB_PASSWORD"];
@@ -139,5 +141,47 @@ function getFillColor($inputUsername) {
 
     $conn->close();
     return null;
+    */
+ 
+        $servername = $_ENV["DB_SERVERNAME"];
+        $username = $_ENV["DB_USERNAME"];
+        $password = $_ENV["DB_PASSWORD"];
+        $dbname = $_ENV["DB_NAME"];
+    
+        // Establishing a connection to the database
+        $conn = new mysqli($servername, $username, $password, $dbname, 3306);
+    
+        // Check for a successful connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+    
+        try {
+            // Query to retrieve the 'Titkos' column based on the 'Username'
+            $sql = "SELECT Titkos FROM tabla WHERE Username = '$inputUsername'";
+            $result = $conn->query($sql);
+    
+            // Check if the query was successful
+            if ($result) {
+                // Check if any rows were returned
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row["Titkos"];
+                } else {
+                    // No matching rows found
+                    return null;
+                }
+            } else {
+                throw new Exception("Query failed: " . $conn->error);
+            }
+        } catch (Exception $e) {
+            // Handle exceptions, log errors, or return an appropriate value
+            die("Error: " . $e->getMessage());
+        } finally {
+            // Always close the database connection, whether the operation was successful or not
+            $conn->close();
+        }
+    }
+    
     
 }
