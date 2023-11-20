@@ -122,6 +122,7 @@ function getFillColor($inputUsername) {
     $password = $_ENV["DB_PASSWORD"];
     $dbname = $_ENV["DB_NAME"];
 
+
     //$servername = getenv("DB_SERVERNAME");
     //$username = getenv("DB_USERNAME");
     //$password = getenv("DB_PASSWORD");
