@@ -199,7 +199,8 @@ function getFillColor($inputUsername) {
 
     try {
         // Establishing a connection to the database
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        //$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname;port=3306", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Query to retrieve the Titkos column for the given username
