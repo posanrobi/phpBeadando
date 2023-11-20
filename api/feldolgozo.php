@@ -181,7 +181,7 @@ function getFillColor($inputUsername) {
             // Always close the database connection, whether the operation was successful or not
             $conn->close();
         }
-    }
+    
     
     
 }
