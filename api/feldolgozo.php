@@ -110,7 +110,7 @@ if (file_exists($filename)) {
 }
 
 
-function getFillColor($inputUsername) {
+/*function getFillColor($inputUsername) {
 
     //$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     //$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../'); 
@@ -118,6 +118,7 @@ function getFillColor($inputUsername) {
     //$dotenv->load();
 
     /*
+//---------------------------------
 
     $servername = $_ENV["DB_SERVERNAME"];
     $username = $_ENV["DB_USERNAME"];
@@ -141,7 +142,7 @@ function getFillColor($inputUsername) {
 
     $conn->close();
     return null;
-    */
+    //--------------------------
  
         $servername = $_ENV["DB_SERVERNAME"];
         $username = $_ENV["DB_USERNAME"];
@@ -153,10 +154,12 @@ function getFillColor($inputUsername) {
         //$conn = new mysqli($_ENV["DB_SERVERNAME"], $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $_ENV["DB_NAME"]);
         $conn = new mysqli(null, $username, $password, $dbname, 0, $servername);
     
+
         // Check for a successful connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
+
     
         try {
             // Query to retrieve the 'Titkos' column based on the 'Username'
@@ -183,7 +186,39 @@ function getFillColor($inputUsername) {
             // Always close the database connection, whether the operation was successful or not
             $conn->close();
         }
-    
-    
-    
+
+}*/
+
+
+
+function getFillColor($inputUsername) {
+    $servername = $_ENV["DB_SERVERNAME"];
+    $username = $_ENV["DB_USERNAME"];
+    $password = $_ENV["DB_PASSWORD"];
+    $dbname = $_ENV["DB_NAME"];
+
+    try {
+        // Establishing a connection to the database
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Query to retrieve the Titkos column for the given username
+        $stmt = $conn->prepare("SELECT Titkos FROM tabla WHERE Username = :username");
+        $stmt->bindParam(':username', $inputUsername);
+        $stmt->execute();
+
+        // Check if any rows are returned
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row["Titkos"];
+        }
+
+        return null;
+    } catch (PDOException $e) {
+        die("Connection failed: " . $e->getMessage());
+    } finally {
+        if ($conn) {
+            $conn = null; // Close the connection
+        }
+    }
 }
