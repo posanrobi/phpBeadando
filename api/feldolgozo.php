@@ -149,7 +149,8 @@ function getFillColor($inputUsername) {
         $dbname = $_ENV["DB_NAME"];
     
         // Establishing a connection to the database
-        $conn = new mysqli($servername, $username, $password, $dbname, 3306);
+        //$conn = new mysqli($servername, $username, $password, $dbname, 3306);
+        $conn = new mysqli($_ENV["DB_SERVERNAME"], $_ENV["DB_USERNAME"], $_ENV["DB_PASSWORD"], $_ENV["DB_NAME"]);
     
         // Check for a successful connection
         if ($conn->connect_error) {
